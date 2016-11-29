@@ -37,7 +37,7 @@ namespace.
 
 ```shell
 $ kubectl create -f examples/blog-logging/counter-pod.yaml
- pods/counter
+pod "counter" created
 ```
 
 We can observe the running pod:
@@ -83,14 +83,14 @@ What happens if for any reason the image in this pod is killed off and then rest
 
 ```shell
 $ kubectl delete pod counter
-pods/counter
+pod "counter" deleted
 ```
 
 Now let's restart the counter.
 
 ```shell
 $ kubectl create -f examples/blog-logging/counter-pod.yaml
-pods/counter
+pod "counter" created
 ```
 
 Let's wait for the container to restart and get the log lines again.
@@ -134,9 +134,9 @@ Note the first container counted to 108 and then it was terminated. When the nex
  We could query the ingested logs from BigQuery using the SQL query which reports the counter log lines showing the newest lines first:
 
 ```shell
-SELECT metadata.timestamp, structPayload.log
+SELECT timestamp, textPayload
 FROM [mylogs.kubernetes_counter_default_count_20150611]
-ORDER BY metadata.timestamp DESC
+ORDER BY timestamp DESC
 ```
 
 Here is some sample output:
@@ -153,7 +153,7 @@ $ gsutil -m cp -r gs://myproject/kubernetes.counter_default_count/2015/06/11 .
 Now we can run queries over the ingested logs. The example below uses the [jq](http://stedolan.github.io/jq/) program to extract just the log lines.
 
 ```shell
-$ cat 21\:00\:00_21\:59\:59_S0.json | jq '.structPayload.log'
+$ cat 21\:00\:00_21\:59\:59_S0.json | jq '.textPayload'
 "0: Thu Jun 11 21:39:38 UTC 2015\n"
 "1: Thu Jun 11 21:39:39 UTC 2015\n"
 "2: Thu Jun 11 21:39:40 UTC 2015\n"
