@@ -122,9 +122,7 @@ We can click on the Logs item under the Monitoring section of the Google Develop
 
 ![Cloud Logging Console](/images/docs/cloud-logging-console.png)
 
-When we view the logs in the Developer Console we observe the logs for both invocations of the container.
-
-![Both Logs](/images/docs/all-lines.png)
+As seen above, when we view the logs in the Developer Console we observe the logs for both invocations of the container.
 
 Note the first container counted to 108 and then it was terminated. When the next container image restarted the counting process resumed from 0. Similarly if we deleted the pod and restarted it we would capture the logs for all instances of the containers in the pod whenever the pod was running.
 
