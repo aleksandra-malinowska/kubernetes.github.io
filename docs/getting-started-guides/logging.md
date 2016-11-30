@@ -143,11 +143,11 @@ Here is some sample output:
 
 ![BigQuery](/images/docs/bigquery-logging.png)
 
-We could also fetch the logs from Google Cloud Storage buckets to our desktop or laptop and then search them locally. The following command fetches logs for the counter pod running in a cluster which is itself in a Compute Engine project called `myproject`. Only logs for the date 2015-06-11 are fetched.
+We could also fetch the logs from Google Cloud Storage buckets to our desktop or laptop and then search them locally. The following command fetches logs for the counter pod exported to bucket `mybucket`. Only logs for the date 2015-06-11 are fetched.
 
 
 ```shell
-$ gsutil -m cp -r gs://myproject/kubernetes.counter_default_count/2015/06/11 .
+$ gsutil -m cp -r gs://mybucket/count/2015/06/11 .
 ```
 
 Now we can run queries over the ingested logs. The example below uses the [jq](http://stedolan.github.io/jq/) program to extract just the log lines.
