@@ -124,9 +124,7 @@ We can click on the Logs item under the Monitoring section of the Google Develop
 
 When we view the logs in the Developer Console we observe the logs for both invocations of the container.
 
-![Both Logs](/images/docs/all-lines.png)
-
-Note the first container counted to 108 and then it was terminated. When the next container image restarted the counting process resumed from 0. Similarly if we deleted the pod and restarted it we would capture the logs for all instances of the containers in the pod whenever the pod was running.
+Note the first container was terminated at 11:34. Similarly if we deleted the pod and restarted it we would capture the logs for all instances of the containers in the pod whenever the pod was running.
 
  Logs ingested into Google Cloud Logging may be exported to various other destinations including [Google Cloud Storage](https://cloud.google.com/storage/) buckets and [BigQuery](https://cloud.google.com/bigquery/). Use the Exports tab in the Cloud Logging console to specify where logs should be streamed to. You can also follow this link to the
  [settings tab](https://pantheon.corp.google.com/project/_/logs/settings).
